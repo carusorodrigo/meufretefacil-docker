@@ -27,4 +27,4 @@ ENV PYTHONPATH=/app:/app/src
 # 1. Usa 'python -m gunicorn' para garantir que o executável seja encontrado.
 # 2. Usa a variável de ambiente $PORT fornecida pelo Render.
 # 3. Usa 'app:aplicativo' para carregar o módulo 'app.py' e a instância 'aplicativo'.
-CMD ["python", "-m", "gunicorn", "--bind", "0.0.0.0:${PORT}", "--workers", "4", "--timeout", "60", "app:aplicativo"]
+CMD python -m gunicorn --bind 0.0.0.0:${PORT} --workers 4 --timeout 60 app:aplicativo
