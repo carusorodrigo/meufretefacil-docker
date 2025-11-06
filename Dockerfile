@@ -20,11 +20,9 @@ EXPOSE 5000
 ENV FLASK_APP=app.py
 ENV FLASK_ENV=production
 ENV PYTHONUNBUFFERED=1
-# Adiciona o diretório atual (app) e o subdiretório src ao PYTHONPATH
-ENV PYTHONPATH=/app:/app/src
+# Simplifica o PYTHONPATH para apenas o diretório de trabalho
+ENV PYTHONPATH=/app
 
-# Comando para iniciar a aplicação
-# 1. Usa 'python -m gunicorn' para garantir que o executável seja encontrado.
-# 2. Usa a variável de ambiente $PORT fornecida pelo Render.
-# 3. Usa 'app:aplicativo' para carregar o módulo 'app.py' e a instância 'aplicativo'.
+# Comando para iniciar a aplicação (forma shell para expansão de $PORT)
+# O Gunicorn deve ser capaz de encontrar o 'src' se o diretório de trabalho estiver no PYTHONPATH.
 CMD python -m gunicorn --bind 0.0.0.0:${PORT} --workers 4 --timeout 60 app:aplicativo
