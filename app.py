@@ -8,13 +8,13 @@ import os
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 # Importações absolutas, agora que a estrutura de pacotes está correta
-from src.models.user import db
-import src.models # Importa todos os modelos para que o SQLAlchemy os reconheça
-from src.routes.motorista import motorista_bp
-from src.routes.transportadora import transportadora_bp
-from src.routes.upload import upload_bp
-from src.routes.historico import historico_bp
-from src.routes.busca import busca_bp # Assumindo que existe um blueprint de busca
+#from src.models.user import db
+#import src.models # Importa todos os modelos para que o SQLAlchemy os reconheça
+#from src.routes.motorista import motorista_bp
+#from src.routes.transportadora import transportadora_bp
+#from src.routes.upload import upload_bp
+#from src.routes.historico import historico_bp
+#from src.routes.busca import busca_bp # Assumindo que existe um blueprint de busca
 
 # Configuração do Flask
 # O Flask agora deve encontrar os arquivos estáticos e de template corretamente
@@ -41,7 +41,7 @@ def index():
 @app.route('/api/template-programacao', methods=['GET'])
 def baixar_template_programacao():
     # Rota de template movida para upload_bp, mas mantendo a rota principal para compatibilidade ou teste
-    from src.routes.upload import baixar_template_programacao as template_route
+    #from src.routes.upload import baixar_template_programacao as template_route
     return template_route()
 
 if __name__ == '__main__':
