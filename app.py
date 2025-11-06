@@ -1,5 +1,11 @@
 from flask import Flask, jsonify, render_template
 from flask_sqlalchemy import SQLAlchemy
+import sys
+import os
+
+# Adiciona o diretório raiz do projeto ao sys.path
+# Isso garante que o Python encontre o módulo 'src'
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 # Importações absolutas, agora que a estrutura de pacotes está correta
 from src.models.user import db
