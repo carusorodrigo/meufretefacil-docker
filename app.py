@@ -24,7 +24,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER'] = '/tmp' # Pasta temporária para uploads
 
 # Inicializa o SQLAlchemy
-db.init_app(app)
+#db.init_app(app)
 
 # Registra os Blueprints
 app.register_blueprint(motorista_bp, url_prefix='/api')
@@ -47,7 +47,7 @@ def baixar_template_programacao():
 if __name__ == '__main__':
     with app.app_context():
         # Cria o banco de dados e tabelas se não existirem
-        db.create_all()
+        #db.create_all()
     import sys
     port = 5000
     if len(sys.argv) > 1:
