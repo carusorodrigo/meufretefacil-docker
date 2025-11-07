@@ -18,27 +18,27 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
 # Configuração do Flask
 # O Flask agora deve encontrar os arquivos estáticos e de template corretamente
-app = Flask(__name__, static_folder='static', template_folder='templates')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///freteconnect.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['UPLOAD_FOLDER'] = '/tmp' # Pasta temporária para uploads
+aplicativo = Flask(__name__, static_folder='static', template_folder='templates')
+aplicativo.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///freteconnect.db'
+aplicativo.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+aplicativo.config['UPLOAD_FOLDER'] = '/tmp' # Pasta temporária para uploads
 
 # Inicializa o SQLAlchemy
 # db.init_app(app)
 
 # Registra os Blueprints
-# app.register_blueprint(motorista_bp, url_prefix='/api')
-# app.register_blueprint(transportadora_bp, url_prefix='/api')
-# app.register_blueprint(upload_bp, url_prefix='/api')
-# app.register_blueprint(historico_bp, url_prefix='/api')
-# app.register_blueprint(busca_bp, url_prefix='/api') # Descomentar se o blueprint de busca for necessário
+# aplicativo.register_blueprint(motorista_bp, url_prefix='/api')
+# aplicativo.register_blueprint(transportadora_bp, url_prefix='/api')
+# aplicativo.register_blueprint(upload_bp, url_prefix='/api')
+# aplicativo.register_blueprint(historico_bp, url_prefix='/api')
+# aplicativo.register_blueprint(busca_bp, url_prefix='/api') # Descomentar se o blueprint de busca for necessário
 
 # Rota principal para servir o frontend
-@app.route('/')
+@aplicativo.route('/')
 def index():
     return render_template('index.html')
 
-@app.route('/api/template-programacao', methods=['GET'])
+@aplicativo.route('/api/template-programacao', methods=['GET'])
 def baixar_template_programacao():
 # Rota de template movida para upload_bp, mas mantendo a rota principal para compatibilidade ou teste
 # from src.routes.upload import baixar_template_programacao as template_route
