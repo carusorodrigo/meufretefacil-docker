@@ -38,10 +38,10 @@ aplicativo.config['UPLOAD_FOLDER'] = '/tmp' # Pasta temporária para uploads
 def index():
     return render_template('index.html')
 
-@aplicativo.route('/api/template-programacao', methods=['GET'])
-def baixar_template_programacao():
+# @aplicativo.route('/api/template-programacao', methods=['GET'])
+# def baixar_template_programacao():
 # Rota de template movida para upload_bp, mas mantendo a rota principal para compatibilidade ou teste
 # from src.routes.upload import baixar_template_programacao as template_route
-return template_route()
+# return template_route()
 
 
