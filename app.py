@@ -27,10 +27,10 @@ app.config['UPLOAD_FOLDER'] = '/tmp' # Pasta temporária para uploads
 # db.init_app(app)
 
 # Registra os Blueprints
-app.register_blueprint(motorista_bp, url_prefix='/api')
-app.register_blueprint(transportadora_bp, url_prefix='/api')
-app.register_blueprint(upload_bp, url_prefix='/api')
-app.register_blueprint(historico_bp, url_prefix='/api')
+# app.register_blueprint(motorista_bp, url_prefix='/api')
+# app.register_blueprint(transportadora_bp, url_prefix='/api')
+# app.register_blueprint(upload_bp, url_prefix='/api')
+# app.register_blueprint(historico_bp, url_prefix='/api')
 # app.register_blueprint(busca_bp, url_prefix='/api') # Descomentar se o blueprint de busca for necessário
 
 # Rota principal para servir o frontend
@@ -45,14 +45,14 @@ def baixar_template_programacao():
     return template_route()
 
 if __name__ == '__main__':
-    with app.app_context():
+  #  with app.app_context():
         # Cria o banco de dados e tabelas se não existirem
         # db.create_all()
-    import sys
-    port = 5000
-    if len(sys.argv) > 1:
-        try:
-            port = int(sys.argv[1])
-        except ValueError:
-            print("Porta inválida. Usando a porta padrão 5000.")
-    app.run(debug=True, host='0.0.0.0', port=port)
+   # import sys
+   # port = 5000
+   # if len(sys.argv) > 1:
+   #     try:
+   #         port = int(sys.argv[1])
+   #     except ValueError:
+   #         print("Porta inválida. Usando a porta padrão 5000.")
+   # app.run(debug=True, host='0.0.0.0', port=port)
