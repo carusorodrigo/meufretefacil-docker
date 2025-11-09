@@ -36,7 +36,7 @@ aplicativo.config['UPLOAD_FOLDER'] = '/tmp' # Pasta temporária para uploads
 # Rota principal para servir o frontend
 @aplicativo.route('/')
 def index():
-return render_template('index.html')
+    return render_template('index.html')
 
 # @aplicativo.route('/api/template-programacao', methods=['GET'])
 # def baixar_template_programacao():
