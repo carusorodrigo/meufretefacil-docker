@@ -33,7 +33,7 @@ aplicativo.config['UPLOAD_FOLDER'] = '/tmp' # Pasta temporária para uploads
 # aplicativo.register_blueprint(historico_bp, url_prefix='/api')
 # aplicativo.register_blueprint(busca_bp, url_prefix='/api') # Descomentar se o blueprint de busca for necessário
 
-Rota principal para servir o frontend
+# Rota principal para servir o frontend
 @aplicativo.route('/')
 def index():
 return render_template('index.html')
