@@ -6,3 +6,4 @@ gunicorn==21.2.0
 werkzeug==2.3.7
 SQLAlchemy==2.0.20
 Flask-SQLAlchemy
+psycopg2-binary
