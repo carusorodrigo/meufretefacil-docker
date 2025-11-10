@@ -1,29 +1,35 @@
 import os
 from flask import Flask, render_template, request, jsonify
-from src.models import db, FreightQuote # Importa o db e o modelo que você acabou de criar
+from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
+from src.models import db, FreightQuote
 
 # Configuração do Flask
 aplicativo = Flask(__name__)
 
 # Configuração do Banco de Dados
-# O Render fornece a URL do banco de dados na variável de ambiente DATABASE_URL
-# O SQLAlchemy precisa que o prefixo seja 'postgresql' e não 'postgres'
 database_url = os.environ.get("DATABASE_URL")
 if database_url and database_url.startswith("postgres://"):
     database_url = database_url.replace("postgres://", "postgresql://", 1)
 
 aplicativo.config['SQLALCHEMY_DATABASE_URI'] = database_url
 aplicativo.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+aplicativo.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'uma-chave-secreta-padrao-muito-segura') # Chave secreta para o Flask-Admin
 
 # Inicializa o banco de dados com o aplicativo
 db.init_app(aplicativo)
+
+# --- Configuração do Painel de Administração (Flask-Admin) ---
+admin = Admin(aplicativo, name='Meu Frete Fácil Admin', template_mode='bootstrap3')
+
+# Adiciona o modelo de cotação de frete ao painel de administração
+admin.add_view(ModelView(FreightQuote, db.session, name='Cotações de Frete'))
 
 # --- Rotas do Aplicativo ---
 
 # Rota principal (Home)
 @aplicativo.route('/')
 def index():
-    # O index.html que você editou será renderizado
     return render_template('index.html')
 
 # Rota de cotação de frete (simulada)
@@ -54,7 +60,6 @@ def quote_freight():
         db.session.add(new_quote)
         db.session.commit()
     except Exception as e:
-        # Em caso de erro no DB, ainda retorna a cotação, mas loga o erro
         print(f"Erro ao salvar no banco de dados: {e}")
         db.session.rollback()
 
@@ -66,13 +71,9 @@ def quote_freight():
 
 # --- Inicialização do Banco de Dados ---
 
-# Cria as tabelas do banco de dados se elas não existirem
-# Isso deve ser executado uma vez, idealmente no primeiro deploy
 with aplicativo.app_context():
     db.create_all()
 
-# O Gunicorn usará 'aplicativo' como o ponto de entrada
 if __name__ == '__main__':
-    # A porta é definida pelo Render na variável de ambiente PORT
     port = int(os.environ.get("PORT", 5000))
     aplicativo.run(host='0.0.0.0', port=port)
