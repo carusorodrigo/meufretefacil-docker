@@ -20,7 +20,7 @@ aplicativo.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'uma-chave-secret
 db.init_app(aplicativo)
 
 # --- Configuração do Painel de Administração (Flask-Admin) ---
-admin = Admin(aplicativo, name='Meu Frete Fácil Admin', template_mode='bootstrap3')
+admin = Admin(aplicativo, name='Meu Frete Fácil Admin')
 
 # Adiciona o modelo de cotação de frete ao painel de administração
 admin.add_view(ModelView(FreightQuote, db.session, name='Cotações de Frete'))
