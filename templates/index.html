@@ -2,10 +2,76 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Meu Frete Fácil - Site em Construção</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Frete Fácil - Cotação de Fretes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+        }
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        .status-box {
+            margin-top: 30px;
+            padding: 15px;
+            border: 1px solid #28a745;
+            background-color: #d4edda;
+            color: #155724;
+            border-radius: 5px;
+        }
+        .status-box h2 {
+            margin-top: 0;
+            color: #155724;
+        }
+        .contact-info {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+    </style>
 </head>
 <body>
-    <h1>Meu Frete Fácil</h1>
-    <p>O site está no ar! A implantação e o domínio foram configurados com sucesso. O conteúdo está sendo carregado.</p>
+    <div class="container">
+        <h1>Meu Frete Fácil</h1>
+        <p>
+            O seu serviço de cotação de fretes está no ar!
+        </p>
+        <div class="status-box">
+            <h2>Implantação Concluída com Sucesso!</h2>
+            <p>O aplicativo foi implantado no Render e o domínio <strong>{{ request.host }}</strong> está ativo e seguro (HTTPS).</p>
+        </div>
+        <p>
+            As funcionalidades de cotação de frete e integração com o banco de dados estão prontas para serem ativadas.
+        </p>
+        <p>
+            <strong>Próximos Passos:</strong> Para ativar as funcionalidades completas, você precisará enviar a pasta <code>src</code> e o código de banco de dados para o GitHub.
+        </p>
+        <div class="contact-info">
+            <p>Se você for o administrador, verifique os logs do Render para o status do aplicativo.</p>
+        </div>
+    </div>
 </body>
 </html>
