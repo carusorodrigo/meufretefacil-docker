@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Frete Fácil - Cotação de Fretes e Logística</title>
+    <title>Meu Frete Fácil - Sistema de Gerenciamento</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -20,171 +20,102 @@
             padding: 0;
             line-height: 1.6;
         }
-        header {
+        .navbar {
             background-color: var(--primary-color);
             color: white;
-            padding: 15px 0;
-            text-align: center;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        header h1 {
+        .navbar h1 {
             margin: 0;
-            font-size: 1.8em;
+            font-size: 1.5em;
         }
-        .content-section {
-            padding: 60px 20px;
-            text-align: center;
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
         }
-        .hero {
-            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('https://via.placeholder.com/1500x500.png?text=Fundo+Logistica' );
-            background-size: cover;
-            background-position: center;
+        .nav-links a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
         }
-        .hero h2 {
-            color: var(--primary-color);
-            font-size: 2.5em;
-            margin-bottom: 10px;
+        .content-area {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
-        .hero p {
-            font-size: 1.2em;
-            margin-bottom: 30px;
-        }
-        .quote-box {
+        .dashboard-card {
             background-color: white;
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            max-width: 450px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+        }
+        .quote-box {
+            max-width: 500px;
             margin: 0 auto;
+            text-align: center;
         }
-        .form-group {
-            margin-bottom: 15px;
-            text-align: left;
-        }
-        label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-        input[type="text"], input[type="number"] {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-        button {
-            background-color: var(--secondary-color);
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1em;
-            width: 100%;
-            transition: background-color 0.3s;
-        }
-        button:hover {
-            background-color: #1e7e34;
-        }
-        #result {
-            margin-top: 20px;
-            padding: 15px;
-            border-radius: 5px;
-            font-weight: 600;
-            display: none;
-        }
+        /* Estilos do formulário de cotação (mantidos do código anterior) */
+        .form-group { margin-bottom: 15px; text-align: left; }
+        label { display: block; margin-bottom: 5px; font-weight: 600; }
+        input[type="text"], input[type="number"] { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        button { background-color: var(--secondary-color); color: white; padding: 12px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 1em; width: 100%; transition: background-color 0.3s; }
+        button:hover { background-color: #1e7e34; }
+        #result { margin-top: 20px; padding: 15px; border-radius: 5px; font-weight: 600; display: none; }
         .success { background-color: #d4edda; color: #155724; }
         .error { background-color: #f8d7da; color: #721c24; }
-
-        .features {
-            background-color: white;
-        }
-        .feature-grid {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-        .feature-item {
-            width: 30%;
-            min-width: 250px;
-            margin: 15px;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-            text-align: left;
-        }
-        .feature-item h3 {
-            color: var(--primary-color);
-            margin-top: 0;
-        }
-        footer {
-            background-color: var(--text-color);
-            color: white;
-            padding: 30px 20px;
-            text-align: center;
-            font-size: 0.9em;
-        }
-        footer a {
-            color: white;
-            text-decoration: none;
-            margin: 0 10px;
-        }
     </style>
 </head>
 <body>
-    <header>
+    <div class="navbar">
         <h1>Meu Frete Fácil</h1>
-    </header>
-
-    <section class="content-section hero">
-        <div class="quote-box">
-            <h2>Cote Seu Frete Agora!</h2>
-            <p>Rápido, fácil e com as melhores transportadoras do mercado.</p>
-            
-            <form id="quoteForm">
-                <div class="form-group">
-                    <label for="origin_cep">CEP de Origem:</label>
-                    <input type="text" id="origin_cep" name="origin_cep" placeholder="Ex: 01000-000" required>
-                </div>
-                <div class="form-group">
-                    <label for="destination_cep">CEP de Destino:</label>
-                    <input type="text" id="destination_cep" name="destination_cep" placeholder="Ex: 99999-999" required>
-                </div>
-                <div class="form-group">
-                    <label for="weight">Peso (kg):</label>
-                    <input type="number" id="weight" name="weight" step="0.01" min="0.1" placeholder="Ex: 5.5" required>
-                </div>
-                <button type="submit">Cotar Frete</button>
-            </form>
-
-            <div id="result"></div>
+        <div class="nav-links">
+            <a href="/">Cotação (Home)</a>
+            <a href="/admin">Painel de Administração</a>
+            <a href="#">Cadastro de Transportadoras</a>
+            <a href="#">Cadastro de Usuários</a>
+            <a href="#">Programação</a>
         </div>
-    </section>
+    </div>
 
-    <section class="content-section features">
-        <h2>Por Que Escolher o Meu Frete Fácil?</h2>
-        <div class="feature-grid">
-            <div class="feature-item">
-                <h3>Economia</h3>
-                <p>Compare preços de diversas transportadoras em um só lugar e economize em cada envio.</p>
-            </div>
-            <div class="feature-item">
-                <h3>Agilidade</h3>
-                <p>Cotação instantânea. Não perca tempo esperando orçamentos por e-mail ou telefone.</p>
-            </div>
-            <div class="feature-item">
-                <h3>Segurança</h3>
-                <p>Trabalhamos apenas com transportadoras verificadas e de alta confiança no mercado.</p>
+    <div class="content-area">
+        <div class="dashboard-card">
+            <h2>Bem-vindo ao Sistema de Gerenciamento</h2>
+            <p>Aqui você pode gerenciar todas as suas cotações, transportadoras e usuários.</p>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="quote-box">
+                <h3>Cote Seu Frete Agora!</h3>
+                <p>Use o formulário abaixo para testar a funcionalidade de cotação.</p>
+                
+                <form id="quoteForm">
+                    <div class="form-group">
+                        <label for="origin_cep">CEP de Origem:</label>
+                        <input type="text" id="origin_cep" name="origin_cep" placeholder="Ex: 01000-000" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="destination_cep">CEP de Destino:</label>
+                        <input type="text" id="destination_cep" name="destination_cep" placeholder="Ex: 99999-999" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="weight">Peso (kg):</label>
+                        <input type="number" id="weight" name="weight" step="0.01" min="0.1" placeholder="Ex: 5.5" required>
+                    </div>
+                    <button type="submit">Cotar Frete</button>
+                </form>
+
+                <div id="result"></div>
             </div>
         </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2025 Meu Frete Fácil. Todos os direitos reservados.</p>
-        <p><a href="#">Termos de Uso</a> | <a href="#">Política de Privacidade</a></p>
-    </footer>
+    </div>
 
     <script>
         document.getElementById('quoteForm').addEventListener('submit', function(e) {
