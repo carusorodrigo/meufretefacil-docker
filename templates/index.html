@@ -34,7 +34,7 @@
             font-weight: 700;
             display: flex;
             align-items: center;
-            margin-right: auto; /* Empurra os links para a direita */
+            margin-right: auto;
         }
         .navbar .logo img {
             margin-right: 10px;
@@ -44,7 +44,7 @@
             color: white;
             text-decoration: none;
             margin-left: 25px;
-            font-weight: 400; /* Mais leve, como na imagem */
+            font-weight: 400;
             font-size: 0.95em;
             transition: opacity 0.3s;
         }
@@ -59,7 +59,7 @@
             font-size: 2.8em;
             color: var(--text-color);
             margin-bottom: 10px;
-            font-weight: 700; /* Mais pesado, como na imagem */
+            font-weight: 700;
         }
         .hero-section p {
             font-size: 1.2em;
@@ -91,7 +91,6 @@
             margin-bottom: 30px;
         }
         .icon {
-            /* Ajuste para simular o ícone do modelo */
             display: inline-block;
             width: 60px;
             height: 60px;
@@ -130,6 +129,99 @@
         .btn-secondary:hover {
             background-color: #1e7e34;
         }
+
+        /* Estilos para a seção Como Funciona */
+        .how-it-works {
+            padding: 60px 20px;
+            background-color: white;
+            text-align: center;
+        }
+        .how-it-works h2 {
+            font-size: 2em;
+            margin-bottom: 40px;
+        }
+        .steps-container {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+        .step {
+            width: 250px;
+            text-align: center;
+        }
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            border-radius: 50%;
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: white;
+        }
+        .step-1 { background-color: #007bff; }
+        .step-2 { background-color: #28a745; }
+        .step-3 { background-color: #5a40a8; }
+        .step h3 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .step p {
+            color: #6c757d;
+        }
+
+        /* Estilos para a seção de Filtros */
+        .filter-section {
+            padding: 40px 20px;
+            background-color: var(--bg-color);
+        }
+        .filter-section h2 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+            text-align: left;
+        }
+        .filter-form {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: flex-end;
+        }
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            min-width: 200px;
+        }
+        .filter-group label {
+            font-size: 0.9em;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        .filter-group input, .filter-group select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+        .filter-buttons button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+        .btn-search {
+            background-color: #007bff;
+            color: white;
+        }
+        .btn-clear {
+            background-color: #6c757d;
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -155,7 +247,7 @@
         <div class="card-container">
             <div class="card">
                 <!-- Ícone de Motorista -->
-                <div class="icon icon-motorista" style="background-color: #4a40a8;">👤</div>
+                <div class="icon icon-motorista" style="background-color: #007bff;">👤</div>
                 <h3>Para Motoristas</h3>
                 <p>Cadastre seu perfil e veículos, defina suas preferências de rota e encontre cargas disponíveis.</p>
                 <button class="btn-primary">Cadastrar como Motorista</button>
@@ -168,6 +260,59 @@
                 <button class="btn-secondary">Cadastrar Transportadora</button>
             </div>
         </div>
+    </div>
+
+    <!-- Seção Como Funciona -->
+    <div class="how-it-works">
+        <h2>Como Funciona</h2>
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-number step-1" style="background-color: #007bff;">1</div>
+                <h3>Cadastro</h3>
+                <p>Motoristas e transportadoras se cadastram na plataforma</p>
+            </div>
+            <div class="step">
+                <div class="step-number step-2" style="background-color: #28a745;">2</div>
+                <h3>Correspondência</h3>
+                <p>Sistema encontra correspondências entre cargas e veículos</p>
+            </div>
+            <div class="step">
+                <div class="step-number step-3" style="background-color: #5a40a8;">3</div>
+                <h3>Conexão</h3>
+                <p>Motoristas e transportadoras se conectam diretamente</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Seção de Filtros de Busca -->
+    <div class="filter-section">
+        <h2>Filtros de Busca</h2>
+        <form class="filter-form">
+            <div class="filter-group">
+                <label for="origem">Origem</label>
+                <input type="text" id="origem" placeholder="Cidade, Estado">
+            </div>
+            <div class="filter-group">
+                <label for="destino">Destino</label>
+                <input type="text" id="destino" placeholder="Cidade, Estado">
+            </div>
+            <div class="filter-group">
+                <label for="peso">Peso Mínimo (t)</label>
+                <input type="number" id="peso" placeholder="0.5">
+            </div>
+            <div class="filter-group">
+                <label for="veiculo">Tipo de Veículo</label>
+                <select id="veiculo">
+                    <option>Todos</option>
+                    <option>Caminhão Baú</option>
+                    <option>Carreta</option>
+                </select>
+            </div>
+            <div class="filter-buttons">
+                <button type="submit" class="btn-search">Buscar</button>
+                <button type="reset" class="btn-clear">Limpar</button>
+            </div>
+        </form>
     </div>
 
     <!-- O Painel de Administração está acessível em /admin -->
