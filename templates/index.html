@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Frete Fácil - Conectando o Transporte de Cargas</title>
+    <title>FreteConnect - Conectando o Transporte de Cargas</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -34,16 +34,18 @@
             font-weight: 700;
             display: flex;
             align-items: center;
+            margin-right: auto; /* Empurra os links para a direita */
         }
         .navbar .logo img {
             margin-right: 10px;
-            height: 30px; /* Ajuste conforme o ícone */
+            height: 30px;
         }
         .nav-links a {
             color: white;
             text-decoration: none;
             margin-left: 25px;
-            font-weight: 600;
+            font-weight: 400; /* Mais leve, como na imagem */
+            font-size: 0.95em;
             transition: opacity 0.3s;
         }
         .nav-links a:hover {
@@ -57,6 +59,7 @@
             font-size: 2.8em;
             color: var(--text-color);
             margin-bottom: 10px;
+            font-weight: 700; /* Mais pesado, como na imagem */
         }
         .hero-section p {
             font-size: 1.2em;
@@ -88,15 +91,13 @@
             margin-bottom: 30px;
         }
         .icon {
-            font-size: 3em;
-            color: var(--primary-color);
-            /* Ícones simulados */
+            /* Ajuste para simular o ícone do modelo */
             display: inline-block;
             width: 60px;
             height: 60px;
             line-height: 60px;
             border-radius: 50%;
-            background-color: #e9ecef;
+            font-size: 2.5em;
         }
         .icon-motorista { background-color: #007bff; color: white; }
         .icon-transportadora { background-color: var(--secondary-color); color: white; }
@@ -134,9 +135,9 @@
 <body>
     <div class="navbar">
         <div class="logo">
-            <!-- Simulação do ícone do caminhão -->
+            <!-- Ícone do caminhão e nome do site -->
             <span style="font-size: 1.5em; margin-right: 10px;">🚚</span>
-            Meu Frete Fácil
+            FreteConnect
         </div>
         <div class="nav-links">
             <a href="#">Início</a>
@@ -153,13 +154,15 @@
 
         <div class="card-container">
             <div class="card">
-                <span class="icon icon-motorista">👤</span>
+                <!-- Ícone de Motorista -->
+                <div class="icon icon-motorista" style="background-color: #4a40a8;">👤</div>
                 <h3>Para Motoristas</h3>
                 <p>Cadastre seu perfil e veículos, defina suas preferências de rota e encontre cargas disponíveis.</p>
                 <button class="btn-primary">Cadastrar como Motorista</button>
             </div>
             <div class="card">
-                <span class="icon icon-transportadora">🏢</span>
+                <!-- Ícone de Transportadora -->
+                <div class="icon icon-transportadora" style="background-color: #28a745;">🏢</div>
                 <h3>Para Transportadoras</h3>
                 <p>Publique ofertas de carga e encontre motoristas qualificados para suas necessidades.</p>
                 <button class="btn-secondary">Cadastrar Transportadora</button>
