@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Frete Fácil - Sistema de Gerenciamento</title>
+    <title>Meu Frete Fácil - Conectando o Transporte de Cargas</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #007bff;
+            --primary-color: #5a40a8; /* Cor roxa do FreteConnect */
             --secondary-color: #28a745;
             --text-color: #333;
             --bg-color: #f8f9fa;
@@ -23,142 +23,150 @@
         .navbar {
             background-color: var(--primary-color);
             color: white;
-            padding: 10px 20px;
+            padding: 15px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
-        .navbar h1 {
-            margin: 0;
-            font-size: 1.5em;
+        .navbar .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        .navbar .logo img {
+            margin-right: 10px;
+            height: 30px; /* Ajuste conforme o ícone */
         }
         .nav-links a {
             color: white;
             text-decoration: none;
-            margin-left: 20px;
+            margin-left: 25px;
             font-weight: 600;
-            padding: 5px 10px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
+            transition: opacity 0.3s;
         }
         .nav-links a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
+            opacity: 0.8;
         }
-        .content-area {
-            padding: 40px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .dashboard-card {
-            background-color: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            margin-bottom: 30px;
-        }
-        .quote-box {
-            max-width: 500px;
-            margin: 0 auto;
+        .hero-section {
+            padding: 80px 20px;
             text-align: center;
         }
-        /* Estilos do formulário de cotação (mantidos do código anterior) */
-        .form-group { margin-bottom: 15px; text-align: left; }
-        label { display: block; margin-bottom: 5px; font-weight: 600; }
-        input[type="text"], input[type="number"] { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
-        button { background-color: var(--secondary-color); color: white; padding: 12px 20px; border: none; border-radius: 5px; cursor: pointer; font-size: 1em; width: 100%; transition: background-color 0.3s; }
-        button:hover { background-color: #1e7e34; }
-        #result { margin-top: 20px; padding: 15px; border-radius: 5px; font-weight: 600; display: none; }
-        .success { background-color: #d4edda; color: #155724; }
-        .error { background-color: #f8d7da; color: #721c24; }
+        .hero-section h2 {
+            font-size: 2.8em;
+            color: var(--text-color);
+            margin-bottom: 10px;
+        }
+        .hero-section p {
+            font-size: 1.2em;
+            color: #6c757d;
+            margin-bottom: 50px;
+        }
+        .card-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+        .card {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            width: 40%;
+            min-width: 300px;
+            text-align: center;
+        }
+        .card h3 {
+            color: var(--text-color);
+            font-size: 1.5em;
+            margin-top: 15px;
+        }
+        .card p {
+            color: #6c757d;
+            margin-bottom: 30px;
+        }
+        .icon {
+            font-size: 3em;
+            color: var(--primary-color);
+            /* Ícones simulados */
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            border-radius: 50%;
+            background-color: #e9ecef;
+        }
+        .icon-motorista { background-color: #007bff; color: white; }
+        .icon-transportadora { background-color: var(--secondary-color); color: white; }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        .btn-secondary:hover {
+            background-color: #1e7e34;
+        }
     </style>
 </head>
 <body>
     <div class="navbar">
-        <h1>Meu Frete Fácil</h1>
+        <div class="logo">
+            <!-- Simulação do ícone do caminhão -->
+            <span style="font-size: 1.5em; margin-right: 10px;">🚚</span>
+            Meu Frete Fácil
+        </div>
         <div class="nav-links">
-            <a href="/">Cotação (Home)</a>
-            <a href="/admin">Painel de Administração</a>
-            <a href="#">Cadastro de Transportadoras</a>
-            <a href="#">Cadastro de Usuários</a>
+            <a href="#">Início</a>
+            <a href="#">Motorista</a>
+            <a href="#">Transportadora</a>
             <a href="#">Programação</a>
+            <a href="#">Buscar Cargas</a>
         </div>
     </div>
 
-    <div class="content-area">
-        <div class="dashboard-card">
-            <h2>Bem-vindo ao Sistema de Gerenciamento</h2>
-            <p>Aqui você pode gerenciar todas as suas cotações, transportadoras e usuários.</p>
-        </div>
+    <div class="hero-section">
+        <h2>Conectando o Transporte de Cargas</h2>
+        <p>Plataforma que conecta motoristas autônomos e transportadoras, facilitando a oferta e busca de cargas em todo o Brasil.</p>
 
-        <div class="dashboard-card">
-            <div class="quote-box">
-                <h3>Cote Seu Frete Agora!</h3>
-                <p>Use o formulário abaixo para testar a funcionalidade de cotação.</p>
-                
-                <form id="quoteForm">
-                    <div class="form-group">
-                        <label for="origin_cep">CEP de Origem:</label>
-                        <input type="text" id="origin_cep" name="origin_cep" placeholder="Ex: 01000-000" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="destination_cep">CEP de Destino:</label>
-                        <input type="text" id="destination_cep" name="destination_cep" placeholder="Ex: 99999-999" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="weight">Peso (kg):</label>
-                        <input type="number" id="weight" name="weight" step="0.01" min="0.1" placeholder="Ex: 5.5" required>
-                    </div>
-                    <button type="submit">Cotar Frete</button>
-                </form>
-
-                <div id="result"></div>
+        <div class="card-container">
+            <div class="card">
+                <span class="icon icon-motorista">👤</span>
+                <h3>Para Motoristas</h3>
+                <p>Cadastre seu perfil e veículos, defina suas preferências de rota e encontre cargas disponíveis.</p>
+                <button class="btn-primary">Cadastrar como Motorista</button>
+            </div>
+            <div class="card">
+                <span class="icon icon-transportadora">🏢</span>
+                <h3>Para Transportadoras</h3>
+                <p>Publique ofertas de carga e encontre motoristas qualificados para suas necessidades.</p>
+                <button class="btn-secondary">Cadastrar Transportadora</button>
             </div>
         </div>
     </div>
 
-    <script>
-        document.getElementById('quoteForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const form = e.target;
-            const resultDiv = document.getElementById('result');
-            resultDiv.style.display = 'none';
-            resultDiv.className = '';
-            resultDiv.textContent = 'Calculando...';
-            resultDiv.style.display = 'block';
-
-            const data = {
-                origin_cep: form.origin_cep.value,
-                destination_cep: form.destination_cep.value,
-                weight: parseFloat(form.weight.value)
-            };
-
-            fetch('/quote', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    resultDiv.className = 'success';
-                    resultDiv.innerHTML = `<strong>Cotação Encontrada!</strong>  
-Valor: ${data.quote_value}  
-${data.message}`;
-                } else {
-                    resultDiv.className = 'error';
-                    resultDiv.innerHTML = `<strong>Erro:</strong> ${data.error}`;
-                }
-            })
-            .catch(error => {
-                resultDiv.className = 'error';
-                resultDiv.innerHTML = `<strong>Erro de Conexão:</strong> Não foi possível conectar ao servidor.`;
-                console.error('Error:', error);
-            });
-        });
-    </script>
+    <!-- O Painel de Administração está acessível em /admin -->
 </body>
 </html>
