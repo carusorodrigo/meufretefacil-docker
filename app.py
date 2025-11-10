@@ -75,4 +75,4 @@ with aplicativo.app_context():
 if __name__ == '__main__':
     # A porta é definida pelo Render na variável de ambiente PORT
     port = int(os.environ.get("PORT", 5000))
-    aplicativo.run(host='0.0.0.0', port=port
+    aplicativo.run(host='0.0.0.0', port=port)
